@@ -13,3 +13,24 @@ public class patt1
         }
     }
 }
+
+
+import java.util.*;
+
+public class patt2 {
+
+	public static void main(String args[]) {
+		int i, j;
+
+		Scanner scanner = new Scanner(System.in);
+
+		for (i = 4; i > 0; i--) {
+			
+			for (j = i; j > 0; j--) {
+				System.out.print("* ");
+			}
+			
+			System.out.print("\n");
+		}
+	}
+}
