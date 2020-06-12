@@ -1,6 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
+
+public class ll {
+	
+	public static void main(String[] args) {
+		Node head = new Node("1");
+		head.next = new Node("2");
+		head.next.next = new Node("3");
+		head.next.next.next = new Node("4");
+		head.next.next.next.next = new Node("5");
+		head.next.next.next.next.next = new Node("6");
+		head.next.next.next.next.next.next = new Node("7");
+		head.next.next.next.next.next.next.next = head.next.next;
+		findLoop(head);
+	}
+	
+	private static void findLoop(Node head) {
+		Node slow = head;
+		Node fast = head.next.next;
+		while(slow != null) {
+			if(slow == fast) {
+				System.out.println("Loop Found in Linked List");
+				int lengthLoop = findLength(slow, fast);
+				break;
+			}else {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+		}
+	}
+
+	private static int findLength(Node firstPtr, Node secondPtr) {
+		secondPtr = secondPtr.next;
+		int lengthLoop = 1;
+		while(secondPtr != firstPtr) {
+			lengthLoop++;
+			secondPtr = secondPtr.next;
+		}
+		System.out.println("Length of Loop is "+lengthLoop);
+		return lengthLoop;
+	}
+
+}
